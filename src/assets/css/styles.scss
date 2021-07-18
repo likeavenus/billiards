@@ -1,0 +1,170 @@
+@import "~normalize.css";
+@import "variables.scss";
+@import "popup.scss";
+@import "header.scss";
+@import "welcome.scss";
+@import "training.scss";
+@import "reviews.scss";
+@import "courses.scss";
+@import "services.scss";
+@import "teachers.scss";
+@import "about.scss";
+@import "contact.scss";
+@import "footer.scss";
+
+html {
+    touch-action: manipulation;
+}
+
+body {
+    font-family: $rubikReg;
+    background-color: #121212;
+    color: #fff;
+    position: relative;
+}
+
+h1 {
+    font-size: 27px;
+    font-family: $rubikReg;
+}
+
+// общий стиль для всех title (кроме первого 40hz). здесь регулируется только размер шрифта. остальные стили делаем в стилях компонента
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: $rubikReg;
+    transform: translate(0px, 120%);
+    opacity: 0;
+    transition: all 0.8s ease 0s;
+
+    &.visible {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+
+    @media (min-width: $tablet) {
+        font-size: 40px;
+    }
+
+    @media (min-width: $laptop) {
+        font-size: 60px;
+    }
+}
+
+h2 {
+    text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+.button {
+    border: none;
+    color: #fff;
+    background-color: $orange;
+    border-radius: 50px;
+    padding: 12px 17.5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.19s ease;
+
+    &:hover {
+        background-color: $orangeHover;
+    }
+
+    &:focus,
+    &:active {
+        background-color: $orangeActive;
+    }
+
+    @media (min-width: $laptop) {
+        padding: 15px 25px;
+        font-size: 23px;
+    }
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+.main {
+    width: 100%;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
+
+    &.main--blured {
+        transition: all 0.19s ease;
+        filter: blur(5px);
+    }
+
+    &.main--hidden {
+        height: 100vh;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &.main--cropped {
+        overflow: hidden;
+        height: 100vh;
+    }
+}
+
+.button__close {
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/close.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+
+    @media (min-width: $laptop) {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+.text__backlight {
+    color: $orange;
+    font-weight: bold;
+}
+
+.social__networks-link {
+    display: inline-block;
+}
+
+::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 20px;
+}
