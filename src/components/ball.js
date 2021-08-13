@@ -1,4 +1,4 @@
-import { ctx } from './constants';
+import { ctx, getDistance, sizes, resolveCollision } from './constants';
 
 export default class Ball {
     constructor(props) {
@@ -6,15 +6,32 @@ export default class Ball {
         this.y = props.y;
         this.radius = props.radius;
         this.color = props.color;
+        this.mass = 1;
 
-        this.velocity = {
-            x: Math.random() - 0.5,
-            y: Math.random() - 0.5,
-        };
+        this.velocity = !props.velocity ? {
+            x: Math.random() - 1.5,
+            y: Math.random() - 1.5,
+        } : props.velocity;
     }
 
-    update() {
+    update(balls) {
         this.render();
+
+        for (let i = 0; i < balls.length; i++) {
+            if (this === balls[i]) continue;
+            if (getDistance(this.x, this.y, balls[i].x, balls[i].y) - this.radius * 2 < 0) {
+                resolveCollision(this, balls[i]);
+            }
+        }
+
+        if (this.x - this.radius <= 0 || this.x + this.radius >= sizes.width) {
+            this.velocity.x = -this.velocity.x;
+        }
+        
+        if (this.y - this.radius <= 0 || this.y + this.radius >= sizes.height) {
+            this.velocity.y = -this.velocity.y;
+        }
+
         this.x += this.velocity.x;
         this.y += this.velocity.y;
     }
