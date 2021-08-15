@@ -19,31 +19,31 @@ export default function Welcome() {
     var moveX = 0;
     var moveY = 0;
 
-    addEventListener('mousemove', (e) => {
-        totalX += Math.abs(e.movementX);
-        totalY += Math.abs(e.movementY);
-        moveX += e.movementX;
-        moveY += e.movementY;
-        mouseVelocity.x = moveX;
-        mouseVelocity.y = moveY;
+    canvas.addEventListener('mousemove', (e) => {
+        // totalX += Math.abs(e.movementX);
+        // totalY += Math.abs(e.movementY);
+        // moveX += e.movementX;
+        // moveY += e.movementY;
+        // mouseVelocity.x = moveX;
+        // mouseVelocity.y = moveY;
 
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+        // mouse.x = e.clientX;
+        // mouse.y = e.clientY;
     })
-    setInterval(function(){
-        console.log(`Speed X: ${totalX}px/s, Y: ${totalY}px/s`);
-        console.log(`Movement X: ${moveX}px/s, Y: ${moveY}px/s`);
-        moveX = moveY = totalX = totalY = 0;
-    }, 200);
+    // setInterval(function(){
+    //     console.log(`Speed X: ${totalX}px/s, Y: ${totalY}px/s`);
+    //     console.log(`Movement X: ${moveX}px/s, Y: ${moveY}px/s`);
+    //     moveX = moveY = totalX = totalY = 0;
+    // }, 200);
 
    
     const userBall = new Ball({ x: innerWidth/2, y: innerHeight/2, radius: 10, color: 'green'});
-    balls.push(userBall);
+    // balls.push(userBall);
 
     const init = () => {
         const radius = 10;
         
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 80; i++) {
             let x = randomIntFromRange(radius, canvas.width - radius);
             let y = randomIntFromRange(radius, canvas.height - radius);
             const color = 'white';
